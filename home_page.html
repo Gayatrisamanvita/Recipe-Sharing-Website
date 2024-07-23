@@ -1,0 +1,139 @@
+
+
+<html>
+<head>
+<title>
+Recipe sharing website</title>
+<link rel="stylesheet" type="text/css"  href="mycode.css"/>
+ <script>
+        function saveRecipe() {
+            var recipeName = document.getElementById("recipeName").value;
+            var recipeInstructions = document.getElementById("recipeInstructions").value;
+
+            var savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+            savedRecipes.push({ name: recipeName, instructions: recipeInstructions });
+            localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+
+            alert("Recipe saved successfully!");
+            document.getElementById("recipeName").value = "";
+            document.getElementById("recipeInstructions").value = "";
+        }
+
+        function displayRecipes() {
+            var savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+            var recipeList = document.getElementById("recipeList");
+            recipeList.innerHTML = "";
+
+            savedRecipes.forEach(function(recipe, index) {
+                var recipeItem = document.createElement("li");
+                recipeItem.innerHTML = `<strong>${recipe.name}</strong>: ${recipe.instructions}`;
+                recipeList.appendChild(recipeItem);
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="first">
+<br>
+<div class="row">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <div class="column"><img class="img" src="https://thumbs.dreamstime.com/b/indian-vegetarian-food-peas-curry-popular-side-dish-items-like-chapati-bowl-84339565.jpg" width="150" height="120" padding="10" margin="10"></div>
+<div class="column"><img class="img" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/burger-round-retroplanet.jpg" width="150" height="120" padding="10" margin="10"></div>
+<div class="column1"><h1>Recipe Sharing Website</h1></div>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <div class="column"><img class="img" src="https://www.ruchiskitchen.com/wp-content/uploads/2016/03/Motichoor-Ladoo-Recipe-5-500x375.jpg" width="150" height="120" padding="10" margin="10"></div>
+<div class="column"><img class="img" src="https://images.moneycontrol.com/static-mcnews/2021/05/Behrouz-Biryani-770x433.jpg" width="150" height="120" padding="10" margin="10"></div>
+</div>
+</div>
+
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<div class="container">
+<h1>Live, love, eat.</h1>
+<div class="navbar">
+<ul>
+<li><div class="search">
+        <input type="text" placeholder="Search Food" width=100%>
+        </div></li>
+<li><a href="login.html">LOGIN</a</li>
+<li><a href="index.html">HOME</a></li>
+<li><a href="mycodeabout.html">ABOUT</a></li>
+<li><a href="mycodereservation.html">RESERVATION</a></li>
+<li><a href="team.html" >OUR TEAM</a></li>
+<li><a href="gallery.html" >GALLERY</a></li>
+<li><a href="#" >CONTACT</a></li>
+</ul>
+</div>
+</div>
+<hr><HR>
+<div class="row3">
+<div class="column3"> 
+    <center><h1 style="color: white;">Non-Vegitarian</h1></center>
+    <center><img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPYXVlv94P7pqdsdItynKMwYjuOWqheEARA&usqp=CAU"></center>
+    <br><center><button class="block"><a href="mycode2.html">Explore</a></button></center>
+</div>
+<div class="column3"> 
+    <center><h1 style="color: white;">Vegitarian</h1></center>
+    <center><img class="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRzai3OQi3JEFoIUDGbA3VXPOYC1MXwdSv_g&usqp=CAU"></center>
+    <br><center><button class="block"><a href="mycode3.html">Explore</a></button></center>
+</div>
+</div>
+</div>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <div class="container">
+        <h1>Favorite Recipe Saver</h1>
+
+        <label for="recipeName">Recipe Name:</label>
+        <input type="text" id="recipeName" placeholder="Enter recipe name"><br>
+
+        <label for="recipeInstructions">Recipe Instructions:</label><br>
+        <textarea id="recipeInstructions" rows="4" cols="50" placeholder="Enter recipe instructions"></textarea><br>
+
+        <button onclick="saveRecipe()">Save Recipe</button>
+        <button onclick="displayRecipes()">Display Saved Recipes</button>
+
+        <h2>Saved Recipes:</h2>
+        <ul id="recipeList"></ul>
+    </div>
+<footer>
+  <div class="width-100 footer-background">
+    <div class="container">
+      <div class="width-25">
+        <h4>QUICK LINKS</h4>
+        <ul class="footer-list">
+          <li>C / C++ Jobs </li>
+          <li>Java Jobs </li>
+          <li>HTML Jobs </li>
+          <li>PHP Jobs </li>
+        </ul>
+      </div>
+      <div class="width-25">
+        <h4>RESOURCES</h4>
+        <ul class="footer-list">
+          <li>Home</li>
+          <li>Post Free Job</li>
+          <li>Recruiter Login</li>
+          <li>Contact us</li>
+        </ul>
+      </div>
+      <div class="width-25">
+        <h4>GET IN TOUCH</h4>
+        <ul class="get-in-touch">
+          <li>
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <p>E-MAIL: info@mbhg.com</p>
+          </li>
+          <li>
+            <i class="fa fa-headphones" aria-hidden="true"></i>
+            <p>WHATS-APP: +91 -9391689197</p>
+          </li>
+          <li>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            <p>WEBSITE: https://www.mbhg.com</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+</body
+</html>
