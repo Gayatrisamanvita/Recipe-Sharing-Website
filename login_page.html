@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Sharing Website</title>
+    <link rel="stylesheet" type="text/css" href="mycode.css"/>
+    <script>
+        function saveRecipe() {
+            var recipeName = document.getElementById("recipeName").value;
+            var recipeInstructions = document.getElementById("recipeInstructions").value;
+
+            var savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+            savedRecipes.push({ name: recipeName, instructions: recipeInstructions });
+            localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+
+            alert("Recipe saved successfully!");
+            document.getElementById("recipeName").value = "";
+            document.getElementById("recipeInstructions").value = "";
+        }
+
+        function displayRecipes() {
+            var savedRecipes = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+            var recipeList = document.getElementById("recipeList");
+            recipeList.innerHTML = "";
+
+            savedRecipes.forEach(function(recipe, index) {
+                var recipeItem = document.createElement("li");
+                recipeItem.innerHTML = `<strong>${recipe.name}</strong>: ${recipe.instructions}`;
+                recipeList.appendChild(recipeItem);
+            });
+        }
+
+        function validatePassword() {
+            var myInput = document.getElementById("psw");
+            var letter = document.getElementById("letter");
+            var capital = document.getElementById("capital");
+            var number = document.getElementById("number");
+            var length = document.getElementById("length");
+
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+
+        function sam() {
+            alert("Registered Successfully");
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Live, Love, Eat.</h1>
+    <div class="navbar">
+        <ul>
+            <li>
+                <div class="search">
+                    <input type="text" placeholder="Search Food" width="100%">
+                </div>
+            </li>
+            <li><a href="login.html">LOGIN</a></li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="mycodeabout.html">ABOUT</a></li>
+            <li><a href="mycodereservation.html">RESERVATION</a></li>
+            <li><a href="team.html">OUR TEAM</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+    </div>
+</div>
+<hr><HR>
+<h1 style="color: white;">Sign Up Form</h1>
+<form method="get" action="store.jsp">
+    <p style="color: white;">Enter Username:</p>
+    <input style="color: black;" type="text" name="uname"/><br>
+    <label for="psw" style="color:white;">Password: </label><br><br>
+    <input style="color:black;" type="password" name="psw" id="psw"
+           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+           required onkeyup="validatePassword()">
+    <br><br><br>
+    <input style="color: black" type="submit" onsubmit="sam()" value="Submit"/>
+    <input style="color: black" type="reset" value="Reset"/>
+    <div id="message" style="display:none;">
+        <p id="letter" class="invalid">A lowercase letter</p>
+        <p id="capital" class="invalid">A capital (uppercase) letter</p>
+        <p id="number" class="invalid">A number</p>
+        <p id="length" class="invalid">Minimum 8 characters</p>
+    </div>
+</form>
+</body>
+</html>
